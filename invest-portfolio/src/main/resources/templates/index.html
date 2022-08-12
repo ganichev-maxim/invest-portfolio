@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<!--jsp:include page="fragments/headTag.jsp"/-->
+<body>
+<!--jsp:include page="fragments/bodyHeader.jsp"/-->
+<section>
+    <form method="post" action="users">
+        [[#{app.login}]]: <select name="userId">
+    <option value="100000" selected>User</option>
+    <option value="100001">Admin</option>
+</select>
+        <button type="submit">[[#{common.select}]]</button>
+</form>
+<ul>
+    <li><a href="portfolios">[[#{portfolio.title}]]</a></li>
+</ul>
+</section>
+<!--jsp:include page="fragments/footer.jsp"/-->
+</body>
+</html>

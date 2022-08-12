@@ -4,6 +4,7 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -20,6 +21,7 @@ import java.util.Properties;
 @EnableJpaRepositories(transactionManagerRef = "jpaTransactionManager")
 @PropertySource(value = { "classpath:config.properties" })
 @EnableTransactionManagement
+@ComponentScan("ru.ganichev.invest.portfolio.repository")
 public class JpaConfig {
 
     private static final String[] ENTITYMANAGER_PACKAGES_TO_SCAN = { "ru.ganichev.invest.portfolio.model" };

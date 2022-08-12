@@ -1,10 +1,15 @@
 package ru.ganichev.invest.portfolio;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import ru.ganichev.invest.portfolio.model.Portfolio;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import ru.ganichev.invest.portfolio.config.AppConfig;
+import ru.ganichev.invest.portfolio.config.JpaConfig;
+import ru.ganichev.invest.portfolio.config.WebConfig;
 import ru.ganichev.invest.portfolio.service.PortfolioService;
+
+import static org.springframework.boot.WebApplicationType.NONE;
+import static org.springframework.boot.WebApplicationType.SERVLET;
 
 @SpringBootApplication
 public class InvestPortfolioApplication {
@@ -15,6 +20,13 @@ public class InvestPortfolioApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(InvestPortfolioApplication.class, args);
+		new SpringApplicationBuilder()
+				.sources(JpaConfig.class)
+				.web(NONE)
+				.child(AppConfig.class)
+				.web(NONE)
+				.child(WebConfig.class)
+				.web(SERVLET)
+				.run(args);
 	}
 }

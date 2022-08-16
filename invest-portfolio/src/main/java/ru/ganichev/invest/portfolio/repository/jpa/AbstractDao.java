@@ -11,7 +11,7 @@ import java.util.Set;
 
 public abstract class AbstractDao<T extends AbstractBaseEntity> implements Dao<T>{
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
 
     private Class<T> persistentClass;
 
